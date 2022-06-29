@@ -1,0 +1,67 @@
+.field-info-wrapper {
+  font-size: 14px;
+  line-height: 22px;
+  .field-title {
+    color: #8a9199;
+    margin-bottom: 4px;
+  }
+  .field-text {
+    color: #17181a;
+    margin-top: 0;
+  }
+}
+
+.field-configuration-wrapper {
+  // 动态表单容器
+  .form-wrapper {
+    width: 100%;
+    background: #f9f9f9;
+    border: 1px solid #ebedf0;
+    border-radius: 8px;
+    padding: 16px;
+    min-height: 96px;
+
+    .add-button {
+      width: 271px;
+      height: 64px;
+      color: #0073ff;
+    }
+
+    .form-item-wrapper {
+      position: relative;
+      background: #ffffff;
+      border: 1px solid #ebedf0;
+      border-radius: 4px;
+      width: 271px;
+      padding: 16px;
+      margin-right: 16px;
+
+      .form-item {
+        width: 100%;
+        margin-bottom: 10px !important;
+      }
+
+      .delete-button {
+        position: absolute;
+        top: 3px;
+        right: 6px;
+        display: none;
+      }
+
+      &:hover {
+        cursor: pointer;
+
+        .delete-button {
+          display: block;
+          color: #fa5446;
+        }
+      }
+    }
+  }
+}
+
+// 重置样式
+.nusi-form .ant-form.ant-form-vertical > div,
+.nusi-form .ant-form.ant-form-vertical .trantor-form-group {
+  grid-template-columns: none !important;
+}
