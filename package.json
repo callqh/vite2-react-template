@@ -21,10 +21,10 @@
     "build:release": "vite build --mode release",
     "coverage": "vitest run --coverage",
     "dev": "vite --mode development",
-    "lint": "yarn lint:format && yarn lint:fix ",
+    "lint": "pnpm lint:format && pnpm lint:fix ",
     "lint:fix": "eslint ./src --ext .jsx,.js,.ts,.tsx --quiet --fix --ignore-path ./.gitignore",
     "lint:format": "prettier  --loglevel warn --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\" ",
-    "predeploy": "yarn build:release",
+    "predeploy": "pnpm build:release",
     "release": "npx release-it",
     "serve": "vite preview",
     "test": "vitest"
