@@ -16,6 +16,7 @@ const Component: React.FC<IProps> = (props) => {
     readonly,
   } = props;
   const [defaultData, setDefaultData] = useState([]);
+  const [defaultValue, setDefaultValue] = useState(value);
 
   useEffect(() => {
     if (!value || defaultData.length > 0) return;
@@ -26,9 +27,14 @@ const Component: React.FC<IProps> = (props) => {
    * 需要显示的字段文字
    */
   const text = useMemo(
-    () => (!formatText(config, value) ? '-' : formatText(config, value)),
-    [config, value],
+    () => (!formatText(config, defaultValue) ? '-' : formatText(config, defaultValue)),
+    [config, defaultValue],
   );
+
+  const handleChange = (value: any) => {
+    setDefaultValue(value);
+    onChange?.(value);
+  };
 
   return (
     <div className="field-configuration-wrapper">
@@ -42,7 +48,7 @@ const Component: React.FC<IProps> = (props) => {
         <Form
           initValues={defaultData}
           setInitValues={setDefaultData}
-          onChange={onChange}
+          onChange={handleChange}
           config={config}
           readonly={readonly}
           _registerValidator={registerValidator}

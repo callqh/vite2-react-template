@@ -1,1 +1,1 @@
-export * from './omsFieldConfiguration/';
+export * from './omsFieldConfiguration';
