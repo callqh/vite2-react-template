@@ -1,4 +1,4 @@
-// @ts-ignore
+/* eslint-disable simple-import-sort/imports */
 // * No declaration file for less-vars-to-js
 import react from '@vitejs/plugin-react';
 import fs from 'fs';
@@ -10,7 +10,8 @@ import { chunkSplitPlugin } from 'vite-plugin-chunk-split';
 import dts from 'vite-plugin-dts';
 import vitePluginImp from 'vite-plugin-imp';
 import Inspect from 'vite-plugin-inspect';
-import reactJsx from 'vite-react-jsx';
+import Pages from 'vite-plugin-pages';
+import { vitePluginMdToHTML } from 'vite-plugin-md-to-html';
 
 const pathResolver = (path: string) => resolve(__dirname, path);
 // antd主题覆盖文件
@@ -27,7 +28,6 @@ export default defineConfig({
   plugins: [
     Inspect(),
     ViteAliases({}),
-    reactJsx(),
     react(),
     vitePluginImp({
       libList: [
@@ -41,6 +41,12 @@ export default defineConfig({
       exclude: ['./src/App.tsx', './src/index.tsx', 'node_modules'],
     }),
     chunkSplitPlugin({ strategy: 'unbundle' }),
+    // 约定式路由
+    Pages({
+      dirs: 'src/components',
+      extensions: ['tsx', 'jsx', 'ts', 'js', 'md'],
+    }),
+    vitePluginMdToHTML(),
   ],
   css: {
     preprocessorOptions: {
